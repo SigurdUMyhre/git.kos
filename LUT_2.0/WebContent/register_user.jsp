@@ -77,7 +77,7 @@
 			var atpos= email.indexOf("@");
 			var dotpos=email.lastIndexOf(".");
 			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
-				alert("Not a valid e-mail address");
+				alert("Not a valid e-mail address!");
 				return false;
 			}
 			else {
