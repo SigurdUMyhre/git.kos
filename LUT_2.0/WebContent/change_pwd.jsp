@@ -9,13 +9,13 @@ String name=(String) session.getAttribute("name");
 
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
-    WHERE  uname = <%=name %>
+    WHERE  uname = ? <sql:param value="${param.email}" /> 
     AND pw= ? <sql:param value="${param.oldpwd}" /> 
 </sql:query>
 
 <sql:query var="adminusers" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
-    WHERE  uname = <%=name %> 
+    WHERE  uname = ? <sql:param value="${param.email}" /> 
     AND admin = 1
 </sql:query>
 
@@ -35,7 +35,7 @@ String name=(String) session.getAttribute("name");
 
 <c:choose>
 	<c:when test="${ empty userDetails }">
-           Wrong password!
+           Wrong password and/or email!
            <meta http-equiv="refresh" content="5;url=changepwd.jsp">
     </c:when>
     <c:otherwise>
