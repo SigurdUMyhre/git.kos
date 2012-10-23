@@ -21,7 +21,21 @@
 </head>
 <body>
 <h1>User Management</h1>
-
+	
+	<c:set var="review" value="${users.rows[0]}"/>
+	<c:choose>
+		<c:when test="${ empty review }">
+			<p>Currently no users in the database<p>
+			<br><br>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="review" items="${users.rowsByIndex}">
+                    <c:out value="${users[1]}" /><br>
+                    <i>${users[1]}</i>
+                    <br><br>
+                </c:forEach>
+		</c:otherwise>
+	</c:choose>
 	<table>
 		<thead>
 			<tr>
