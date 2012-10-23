@@ -59,6 +59,9 @@
 				<td>
 					<form name="pwform" action="change_pwd.jsp" method="post" onsubmit="return ValidatePassword()">
 						<p>
+							Email: <input type="text" name="email" size="20">
+						</p>
+						<p>
 							Old password: <input type="password" name="oldpwd" size="20">
 						</p>
 						<p>

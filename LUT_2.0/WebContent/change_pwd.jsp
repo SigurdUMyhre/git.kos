@@ -6,7 +6,6 @@
 String name=(String) session.getAttribute("name"); 
 %> 
 
-
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
     WHERE  uname = ? <sql:param value="${param.email}" /> 
