@@ -23,11 +23,12 @@
 		<c:when test="${empty userDetails }">
 			<sql:transaction dataSource="jdbc/lut2">
 				<sql:update var="count">
-        			INSERT INTO admin_users VALUES ('${param.email}', '${param.password1}', '${param.firstname}', '${param.lastname}');
+        			INSERT INTO admin_users VALUES ('${param.email}', '${param.password1}', '${param.firstname}', '${param.lastname}', '0');
    				 </sql:update>
 			</sql:transaction>
 			<h1>Congratulations!</h1>
-				<p>You have been added to the database</p>
+				<p>Your user has been added to the database</p>
+				<%	session.invalidate();%>
 				<p>Click <a href="lutadmin.jsp">here</a> to go to the login page.</p>
 		</c:when>
 		<c:otherwise>

@@ -43,7 +43,7 @@ String name=(String) session.getAttribute("name");
         						UPDATE admin_users
          						SET pw = newpwd
          						WHERE pw = ? <sql:param value="${param.oldpwd}" /> 
-    							AND uname = <%=name %>
+    							AND uname = ? <sql:param value="${param.email}" /> 
    					 </sql:update>
 				</sql:transaction>
 					Your password has changed.

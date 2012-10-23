@@ -4,6 +4,10 @@
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
 </sql:query>
+<% 
+String name=(String) session.getAttribute("name"); 
+%> 
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -15,6 +19,9 @@
 <title>User management</title>
 </head>
 <body>
+ <p align=right> Logged in as <%=name %> </p>
+   <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
+      <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
 <h1>User Management</h1>
 	
 	<c:set var="review" value="${users.rows[0]}"/>
