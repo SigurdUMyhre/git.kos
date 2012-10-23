@@ -2,7 +2,10 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<% 
+String name=request.getParameter("username"); 
+session.setAttribute("name",name); 
+%>
 
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
@@ -10,9 +13,14 @@
     AND pw = ${param.password}
 </sql:query>
 
-    
+<sql:query var="adminusers" dataSource="jdbc/lut2">
+    SELECT * FROM admin_users
+    WHERE  uname = ? <sql:param value="${param.username}" /> 
+    AND admin = 1
+</sql:query>
     
 <c:set var="userDetails" value="${users.rows[0]}"/>
+<c:set var="adminuserDetails" value="${adminusers.rows[0]}"/>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,19 +28,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="lutstyle.css">
-        <title>LUT Admin pages</title>
+        <title>LUT Login</title>
     </head>
     <body>
-        <c:choose>
-            <c:when test="${ empty userDetails }">
+    <c:choose>
+    <c:when test = "${param.number==4}" >
+    	<c:choose>
+			<c:when test="${ empty userDetails }">
                 Login failed
             </c:when>
             <c:otherwise>
-                <h1>Login succeeded</h1> 
-                Welcome ${ userDetails.uname}.<br> 
-                Unfortunately, there is no admin functionality here. <br>
-                You need to figure out how to tamper with the application some other way.
+            	<c:choose>
+           			<c:when test="${ empty adminuserDetails }">
+            			<c:redirect url="index.jsp" />
+            		</c:when>
+            		<c:otherwise>
+            			<c:redirect url="adminindex.jsp" />
+            		</c:otherwise>
+            	</c:choose>
             </c:otherwise>
         </c:choose>
-        </body>
+	</c:when>
+	<c:otherwise>
+        Login failed
+	</c:otherwise>
+	</c:choose>
+	</body>
     </html>

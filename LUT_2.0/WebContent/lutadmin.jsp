@@ -1,4 +1,5 @@
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,11 +9,11 @@
         <title>LUTAdmin</title>
     </head>
     <body>
-        <h1>Welcome to the LUT administration pages!</h1>
+        <h1>Welcome to LUT!</h1>
         <table border="0">
             <thead>
                 <tr>
-                    <th>Log on here to perform administrative tasks</th>
+                    <th>Log in</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,12 +21,16 @@
                     <td><form method="post" action="login.jsp">
 
                             <p>
-                                Username:</font><input type="text" name="username" size="20"></p>
+                                Username:<input type="text" name="username" size="20"></p>
                             <p>
-                                Password:</font><input type="password" name="password" size="20"></p>
+                                Password:<input type="password" name="password" size="20"></p>
+                            <p>
+                            	Hva blir dette? <img src="expression.png" width="100" height="35" alt="Expression"><input type= "text" name="number" size="2"></p>
                             <p><input type="submit" value="submit" name="login"></p>
+                       
                         </form></td>
                 </tr>
+                <tr><td> <a href="register_user.jsp">Create a new user</a></td></tr>
             </tbody>
         </table>
     </body>
