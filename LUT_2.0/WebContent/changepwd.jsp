@@ -19,6 +19,34 @@
 <title>Change password</title>
 </head>
 <body>
+<script language="javascript">
+	
+	/* Validates that the two password strings are equal. The must must also contain more than 3 characters, but no more than 20. */
+	function ValidatePassword(){
+		var pw1 = document.pwform.newpwd.value;
+		var pw2 = document.pwform.renewpwd.value;
+		if (pw1.length < 4){
+			alert("The password must contain more than 3 characters");
+			return false;
+		}
+		if (pw1.length > 20 ){
+			alert("The password cannot be longer than 20 characters");
+			return false;
+		}
+		if (pw1.length != pw2.length){
+			alert("The passwords must be equal");
+			return false;
+		}
+		for (var i = 0; i < pw1.length; i++){
+			if (pw1[i] != pw2[i]){
+				alert("The passwords must be equal");
+				return false;
+			}
+		}
+		return true;
+	}
+</script>
+
 <h1>Change your password</h1>
 	<table>
 		<thead>
@@ -29,7 +57,7 @@
 		<tbody>
 			<tr>
 				<td>
-					<form action="change_pwd.jsp" method="post">
+					<form name="pwform" action="change_pwd.jsp" method="post" onsubmit="return ValidatePassword()">
 						<p>
 							Old password: <input type="password" name="oldpwd" size="20">
 						</p>
@@ -39,7 +67,6 @@
 						<p>
 							Retype new password: <input type="password" name="renewpwd" size="20">
 						</p>
-						
 						<p>
 							<input type="submit" value="Submit"><input type="reset" value = "Reset">
 						</p>
