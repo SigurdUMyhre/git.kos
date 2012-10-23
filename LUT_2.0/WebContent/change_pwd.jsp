@@ -15,7 +15,7 @@ String name=(String) session.getAttribute("name");
 
 <sql:query var="adminusers" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
-    WHERE  uname = ? <sql:param value="${param.username}" /> 
+    WHERE  uname = <%=name %> 
     AND admin = 1
 </sql:query>
 
@@ -34,37 +34,29 @@ String name=(String) session.getAttribute("name");
 
 
 <c:choose>
-			<c:when test="${ empty userDetails }">
-                Wrong password!
-            <meta http-equiv="refresh" content="5;url=changepwd.jsp">
-                
-            </c:when>
-            <c:otherwise>
-            	<c:choose>
-           			<c:when test="${ newpwd == renewpwd}">
-           			<sql:transaction dataSource="jdbc/lut2">
-    						<sql:update var="count">
+	<c:when test="${ empty userDetails }">
+           Wrong password!
+           <meta http-equiv="refresh" content="5;url=changepwd.jsp">
+    </c:when>
+    <c:otherwise>
+           		<sql:transaction dataSource="jdbc/lut2">
+    				<sql:update var="count">
         						UPDATE admin_users
          						SET pw = newpwd
          						WHERE pw = ? <sql:param value="${param.oldpwd}" /> 
     							AND uname = <%=name %>
-   							 </sql:update>
-						</sql:transaction>
-						Your password has changed.
-            		</c:when>
-            		<c:otherwise>
-						You typed wrong.            		
-            		</c:otherwise>
-            		<c:choose>
-						<c:when test="${ empty adminuserDetails }">
-            			 <meta http-equiv="refresh" content="5;url=index.jsp">
-            			</c:when>
-            			<c:otherwise>
-           				 <meta http-equiv="refresh" content="5;url=adminindex.jsp">
-            			</c:otherwise>
-            		</c:choose>
-            	</c:choose>
+   					 </sql:update>
+				</sql:transaction>
+					Your password has changed.
+         </c:otherwise>
+         <c:choose>
+			<c:when test="${ empty adminuserDetails }">
+            			<meta http-equiv="refresh" content="5;url=index.jsp">
+            </c:when>
+            <c:otherwise>
+           			 <meta http-equiv="refresh" content="5;url=adminindex.jsp">
             </c:otherwise>
-        </c:choose>
+         </c:choose>
+    </c:choose>
 </body>
 </html>
