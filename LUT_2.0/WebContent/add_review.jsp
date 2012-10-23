@@ -9,12 +9,12 @@
 String school_id = request.getParameter("school_id");
 String name = request.getParameter("name");
 String review = request.getParameter("review");
-InitalContext ctx = new InitialContext();
-Datasource ds = (DataSource) ctx.lookup("jdbc/lut2");
+/* InitalContext ctx = new InitialContext();
+Datasource ds = (DataSource) ctx.lookup("jdbc/lut2"); */
 
-Connection connection = ds.getConnection();
+/* Connection connection = ds.getConnection();
 PreparedStatement pstatement = null;
-int updateQuery = 0;
+int updateQuery = 0; */
 
 System.out.println("Name: " + name + " review: " + review);
 
@@ -22,33 +22,28 @@ System.out.println("Name: " + name + " review: " + review);
 if(name!=null && review!=null){
 	  if(name!="" && review!="") {
           try {
-/* Create a connection by using getConnection()
-method that takes parameters of string type 
-connection url, user name and password to connect 
- to database. */
- System.out.println("before");
-
-System.out.println("her er vi");
-             // sql query to insert values in the secified table.
-String queryString = "INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)";
- /* createStatement() is used for create statement object that is used for 
- sending sql statements to the specified database. */
-System.out.println("queryString: "+ queryString);
-pstatement = connection.prepareStatement(queryString);
-pstatement.setString(1, school_id);
-pstatement.setString(2, name);
-pstatement.setString(3, review);
-pstatement.executeUpdate();
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+		        Connection con = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1", "", ""); 
+/* 		        InitalContext ctx = new InitialContext();
+				Datasource ds = (DataSource) ctx.lookup("jdbc/lut2");
+		        Connection con = ds.getConnection(); */
+		        Statement st = null;
+		        PreparedStatement ps = null;
+		        ResultSet rs = null;
+		        ps = con.prepareStatement("INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)");
+/* String queryString = "INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)";
+ */
+/* System.out.println("queryString: "+ queryString);
+pstatement = connection.prepareStatement(queryString); */
+ps.setString(1, school_id);
+ps.setString(2, name);
+ps.setString(3, review);
+/* pstatement.executeUpdate(); */
+int result = ps.executeUpdate();
           }
 	catch (Exception ex) {
        out.println("Unable to connect to database.");
-                 }
-    finally {
-                  // close all the connections.
-                  pstatement.close();
-                  connection.close();
      }
-         
   }
 }
 %>
