@@ -2,16 +2,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.io.*"%>
+<%@ page import="javax.sql.DataSource"%>
+<%@ page import="javax.naming.InitialContext" %>
 
 <%
 String school_id = request.getParameter("school_id");
-String name = request.getParameter("user_id");
+String name = request.getParameter("name");
 String review = request.getParameter("review");
-String connectionURL = "jdbc:mysql://localhost:8080/LUT_2.0";
-Connection connection = null;
+InitalContext ctx = new InitialContext();
+Datasource ds = (DataSource) ctx.lookup("jdbc/lut2");
+
+Connection connection = ds.getConnection();
 PreparedStatement pstatement = null;
-Class.forName("com.mysql.jdbc.Driver").newInstance();
 int updateQuery = 0;
+
+System.out.println("Name: " + name + " review: " + review);
 
 //check if the boxes are empty.
 if(name!=null && review!=null){
@@ -21,17 +26,19 @@ if(name!=null && review!=null){
 method that takes parameters of string type 
 connection url, user name and password to connect 
  to database. */
-connection = DriverManager.getConnection
-(connectionURL, "root", "root");
+ System.out.println("before");
+
+System.out.println("her er vi");
              // sql query to insert values in the secified table.
 String queryString = "INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)";
-       /* createStatement() is used for create statement object that is used for 
+ /* createStatement() is used for create statement object that is used for 
  sending sql statements to the specified database. */
+System.out.println("queryString: "+ queryString);
 pstatement = connection.prepareStatement(queryString);
 pstatement.setString(1, school_id);
 pstatement.setString(2, name);
 pstatement.setString(3, review);
-updateQuery = pstatement.executeUpdate();
+pstatement.executeUpdate();
           }
 	catch (Exception ex) {
        out.println("Unable to connect to database.");
@@ -46,12 +53,6 @@ updateQuery = pstatement.executeUpdate();
 }
 %>
 
-<%-- <sql:transaction dataSource="jdbc/lut2">
-    <sql:update var="count">
-        INSERT INTO user_reviews VALUES ('${param.school_id}', '${param.name}', '${param.review}');
-    </sql:update>
-</sql:transaction>  --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,9 +63,8 @@ updateQuery = pstatement.executeUpdate();
         <title>Review added!</title>
     </head>
     <body>
-        <h1>Thanks motherfucker ${param.name}!</h1>
+        <h1>Thanks ${param.name}!</h1>
         Your contribution is appreciated.<br>
         You will be redirected to the LUT2.0 main page in a few seconds.
-    </tr>
 </body>
 </html>
