@@ -1,3 +1,5 @@
+
+
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -17,7 +19,7 @@
         <title>Review added!</title>
     </head>
     <body>
-        <h1>Thanks ${param.name}!</h1>
+        <h1>Thanks motherfuckings ${param.name}!</h1>
         Your contribution is appreciated.<br>
         You will be redirected to the LUT2.0 main page in a few seconds.
     </tr>
