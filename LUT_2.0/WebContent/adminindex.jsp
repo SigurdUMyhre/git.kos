@@ -19,11 +19,12 @@ String name=(String) session.getAttribute("name");
     </head>
     <body>
     
+        <p align=right> Logged in as <%=name %> </p>
    <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
       <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
    
       <h2>Admin page</h2>
-        <h1>Hi <%=name %>!</h1>
+        <h1>Hi!</h1>
       
         <table border="0">
             <thead>

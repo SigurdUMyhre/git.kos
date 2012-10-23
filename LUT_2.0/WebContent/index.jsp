@@ -18,8 +18,11 @@ String name=(String) session.getAttribute("name");
         <title>LUT 2.0 - Help Students Conquer the World</title>
     </head>
     <body>
-       <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
-        <h1>Hi <%=name %>!</h1>
+    <p align=right> Logged in as <%=name %> </p>
+    <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
+      <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
+   
+        <h1>Hi!</h1>
         <table border="0">
             <thead>
                 <tr>
