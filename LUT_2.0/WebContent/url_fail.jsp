@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="lutstyle.css">
-<title>Insert title here</title>
+<title>Error</title>
 </head>
 <body>
 <h1> Error in URL-address</h1>
