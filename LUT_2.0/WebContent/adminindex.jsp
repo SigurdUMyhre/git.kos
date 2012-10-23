@@ -54,7 +54,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to add new schools to review</th>
+                    <th>LUT 2.0 allows you to add new schools to review</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +95,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to register new countries</th>
+                    <th>LUT 2.0 allows you to register new countries</th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +123,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to manage the registrated users</th>
+                    <th>LUT 2.0 allows you to manage the registrated users</th>
                 </tr>
             </thead>
             <tbody>

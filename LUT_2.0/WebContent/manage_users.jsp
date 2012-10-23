@@ -5,11 +5,6 @@
     SELECT * FROM admin_users
 </sql:query>
 
-<%--<c:set var="userEmail" value="${users.rows[0].uname}"/>
-<c:set var="userFirstname" value="${users.first_name}"/>
-<c:set var="userLastname" value="${users.last_name}"/>
-<c:set var="userAdmin" value="${users.admin}"/>
---%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,9 +24,11 @@
 			<br><br>
 		</c:when>
 		<c:otherwise>
-			<c:forEach var="review" items="${users.rowsByIndex}">
-                    <c:out value="${users[1]}" /><br>
-                    <i>${users[1]}</i>
+			<c:forEach var="users" items="${users.rowsByIndex}">
+                    <c:out value="${users[2]}" /><br>
+                    <i>${users[3]}</i><br>
+                    <i>${users[0]}</i>
+                    <br>________________________
                     <br><br>
                 </c:forEach>
 		</c:otherwise>
@@ -107,20 +104,5 @@
 		</tbody>
 	</table>
 	
-<%-- Name:	${userFirstname[1]}				Email:				Admin:
-        <!-- looping through all available reviews - if there are any -->
-	<c:forEach var="userDetails" items="${userDetails.rowsByIndex}">
-		Name: ${userDetails[4]}
-        <c:out value="${userDetails.first_name}" /><br>
-        <c:out value="${userDetails[4]}" /><br>
-        Email: 
-        <c:out value="${userDetails[1]}" /><br>
-        Admin: 
-        <c:out value="${userDetails[5]}" /><br>
-        <br><br>
-     </c:forEach>
---%>
-
-
 </body>
 </html>
