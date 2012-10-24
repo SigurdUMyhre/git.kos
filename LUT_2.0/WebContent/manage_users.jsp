@@ -112,9 +112,7 @@ String name=(String) session.getAttribute("name");
 				</td>
 			</tr>
 		</tbody>
-	</table>
-	
-
+</table>
 
 
 </body>
