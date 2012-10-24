@@ -9,6 +9,31 @@
         <title>LUTAdmin</title>
     </head>
     <body>
+    	
+    	<script language="javascript">
+	    	function ValidateForm(){
+	    		var uname = document.myform.username.value;
+	    		var pw = document.myform.password.value;
+	    		var ans = document.myform.number.value;
+	    		
+	    		if (uname.length < 1){
+	    			alert("You have to enter a username")
+	    			document.myform.username.focus();
+	    			return false;
+	    		}
+	    		else if (pw.length < 1){
+	    			alert("You must enter a password");
+	    			document.myform.password.focus();
+	    			return false;
+	    		}
+	    		else if (ans.length < 1){
+	    			alert("You must enter the rigth number");
+	    			document.myform.number.focus();
+	    			return false;
+	    		}
+	    	}
+    	</script>
+        
         <h1>Welcome to LUT!</h1>
         <table border="0">
             <thead>
@@ -18,8 +43,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><form method="post" action="login.jsp">
-
+                    <td><form name="myform" method="post" action="login.jsp" onsubmit="return ValidateForm()">
                             <p>
                                 Username:<input type="text" name="username" size="20"></p>
                             <p>
