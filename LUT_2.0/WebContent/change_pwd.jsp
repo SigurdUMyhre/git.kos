@@ -27,7 +27,8 @@ String name=(String) session.getAttribute("name");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="lutstyle.css">
+<title>Change password</title>
 </head>
 <body>
 
@@ -41,13 +42,14 @@ String name=(String) session.getAttribute("name");
            		<sql:transaction dataSource="jdbc/lut2">
     				<sql:update var="count">
         						UPDATE admin_users
-         						SET pw = newpwd
+         						SET pw = ${param.oldpwd}
          						WHERE pw = ? <sql:param value="${param.oldpwd}" /> 
     							AND uname = ? <sql:param value="${param.email}" /> 
    					 </sql:update>
 				</sql:transaction>
 					Your password has changed.
    	</c:otherwise>
+   	<%-- 
          <c:choose>
 			<c:when test="${ empty adminuserDetails }">
             			<meta http-equiv="refresh" content="5;url=userindex.jsp">
@@ -56,6 +58,7 @@ String name=(String) session.getAttribute("name");
            			 <meta http-equiv="refresh" content="5;url=adminindex.jsp">
             </c:otherwise>
          </c:choose>
-    </c:choose>
+   	--%>
+</c:choose>
 </body>
 </html>
