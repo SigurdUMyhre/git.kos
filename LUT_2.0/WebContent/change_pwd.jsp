@@ -47,7 +47,7 @@ String name=(String) session.getAttribute("name");
    					 </sql:update>
 				</sql:transaction>
 					Your password has changed.
-         </c:otherwise>
+   	</c:otherwise>
          <c:choose>
 			<c:when test="${ empty adminuserDetails }">
             			<meta http-equiv="refresh" content="5;url=userindex.jsp">
