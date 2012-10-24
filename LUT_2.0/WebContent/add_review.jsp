@@ -18,19 +18,29 @@ int updateQuery = 0; */
 
 System.out.println("Name: " + name + " review: " + review);	
 
+InitialContext ctx = null;
+DataSource ds = null;
+Connection con = null;
+PreparedStatement ps = null;
+ResultSet rs = null;
+
 //check if the boxes are empty.
 if(name!=null && review!=null){
 	  if(name!="" && review!="") {
+		  System.out.println("kommer hit ja");
           try {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-		        Connection con = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1", "", ""); 
-/* 		        InitalContext ctx = new InitialContext();
-				Datasource ds = (DataSource) ctx.lookup("jdbc/lut2");
-		        Connection con = ds.getConnection(); */
-		        Statement st = null;
-		        PreparedStatement ps = null;
-		        ResultSet rs = null;
+        	  String url ="jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1";
+        		String userDB = "sigurdul_ps";
+      			String pwDB ="123456";
+    		  System.out.println("Innenfor try");
+		 		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+		       	con = DriverManager.getConnection(url, userDB, pwDB);  
+    			/* ctx = new InitialContext();	
+				ds = (DataSource) ctx.lookup("jdbc/lut2");
+		        con = ds.getConnection();  */
+System.out.println("kommer forbi connection");
 		        ps = con.prepareStatement("INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)");
+		        System.out.println("tull");	  
 /* String queryString = "INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)";
  */
 /* System.out.println("queryString: "+ queryString);
@@ -38,9 +48,10 @@ pstatement = connection.prepareStatement(queryString); */
 ps.setString(1, school_id);
 ps.setString(2, name);
 ps.setString(3, review);
-ps.executeUpdate();
-int result = ps.executeUpdate();
-          }
+/* ps.executeUpdate(); */
+ int result = ps.executeUpdate();
+System.out.println("ble oppdatert: " + result);
+ }
 	catch (Exception ex) {
        out.println("Unable to connect to database.");
      }
