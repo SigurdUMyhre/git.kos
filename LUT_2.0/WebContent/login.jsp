@@ -22,6 +22,8 @@ session.setAttribute("name",name);
 <c:set var="userDetails" value="${users.rows[0]}"/>
 <c:set var="adminuserDetails" value="${adminusers.rows[0]}"/>
 
+<%--Nå SKAL det funke!! --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
