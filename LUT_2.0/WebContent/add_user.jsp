@@ -2,30 +2,68 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.lang.*"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
 
+<%
+String password = request.getParameter("password1");
+String uname = request.getParameter("email");
+String firstname = request.getParameter("firstname");
+String lastname = request.getParameter("lastname");
 
+InitialContext ctx = new InitialContext();
+DataSource ds = (DataSource) ctx.lookup("jdbc/lut2");
+Connection connection = ds.getConnection();
+if (connection == null)
+{
+throw new SQLException("Error establishing connection!");
+}
+String query = "INSERT INTO admin_users VALUES (?, ?, ?, ?, ?)";
+PreparedStatement statement = connection.prepareStatement(query);
+statement.setString(1, uname);
+statement.setString(2, password);
+statement.setString(3, firstname);
+statement.setString(4, lastname);
+statement.setInt(5, 0);
+
+statement.executeUpdate();
+
+/*
+try {
+statement.executeUpdate();
+}
+catch(Exception e){
+response.sendRedirect("index.jsp");
+}
+*/
+
+connection.close();
+%>
+ 
+ 
 <sql:query var="user" dataSource="jdbc/lut2">
 	SELECT * from admin_users
 	WHERE uname = ? <sql:param value="${param.email}"/> 
 </sql:query>
 
-<c:set var="userDetails" value = "${user.rows[0]}"/>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="lutstyle.css">
-<title>Add user</title>
-</head>
-<body>
+
 	<c:choose>
 		<c:when test="${empty userDetails }">
+		<%-- 
 			<sql:transaction dataSource="jdbc/lut2">
 				<sql:update var="count">
-        			INSERT INTO admin_users VALUES ('${param.email}', '${param.password1}', '${param.firstname}', '${param.lastname}', '0');
+        			<%  %> ;
+        			
+        			INSERT INTO admin_users VALUES ('${param.email}', '${param.password1}', '${param.firstname}', '${param.lastname}', '0'); 
    				 </sql:update>
-			</sql:transaction>
+			</sql:transaction> --%>
 			<h1>Congratulations!</h1>
 				<p>Your user has been added to the database</p>
 				<%	session.invalidate();%>
