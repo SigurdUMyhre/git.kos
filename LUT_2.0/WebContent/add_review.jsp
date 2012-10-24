@@ -16,7 +16,7 @@ Datasource ds = (DataSource) ctx.lookup("jdbc/lut2"); */
 PreparedStatement pstatement = null;
 int updateQuery = 0; */
 
-System.out.println("Name: " + name + " review: " + review);
+System.out.println("Name: " + name + " review: " + review);	
 
 //check if the boxes are empty.
 if(name!=null && review!=null){
@@ -38,7 +38,7 @@ pstatement = connection.prepareStatement(queryString); */
 ps.setString(1, school_id);
 ps.setString(2, name);
 ps.setString(3, review);
-/* pstatement.executeUpdate(); */
+ps.executeUpdate();
 int result = ps.executeUpdate();
           }
 	catch (Exception ex) {
@@ -53,11 +53,12 @@ int result = ps.executeUpdate();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="refresh" content="5;url=index.jsp"> 
+        <meta http-equiv="refresh" content="1;url=index.jsp"> 
         <link rel="stylesheet" type="text/css" href="lutstyle.css">
         <title>Review added!</title>
     </head>
     <body>
+    <% session.invalidate();%>
         <h1>Thanks ${param.name}!</h1>
         Your contribution is appreciated.<br>
         You will be redirected to the LUT2.0 main page in a few seconds.
