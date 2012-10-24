@@ -4,7 +4,7 @@
 <%@ page import="java.io.*"%>
 <%@ page import="javax.sql.DataSource"%>
 <%@ page import="javax.naming.InitialContext" %>
-
+	
 <%
 String school_id = request.getParameter("school_id");
 String name = request.getParameter("name");
