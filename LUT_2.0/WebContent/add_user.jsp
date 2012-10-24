@@ -29,7 +29,7 @@
 			<h1>Congratulations!</h1>
 				<p>Your user has been added to the database</p>
 				<%	session.invalidate();%>
-				<p>Click <a href="lutadmin.jsp">here</a> to go to the login page.</p>
+				<p>Click <a href="index.jsp">here</a> to go to the login page.</p>
 		</c:when>
 		<c:otherwise>
 			<h1>Sorry!</h1>

@@ -23,8 +23,19 @@
 	
 	/* Validates that the two password strings are equal. The must must also contain more than 3 characters, but no more than 20. */
 	function ValidatePassword(){
+		var email = document.pwform.email.value;
+		var oldpwd = document.pwform.oldpwd.value;
 		var pw1 = document.pwform.newpwd.value;
 		var pw2 = document.pwform.renewpwd.value;
+		if (email.length < 1){
+			alert("You must enter your email address");
+			return false;
+		}
+		if (oldpwd.length < 1){
+			alert("You must enter your old password");
+			return false;
+		}
+		
 		if (pw1.length < 4){
 			alert("The password must contain more than 3 characters");
 			return false;
@@ -44,6 +55,7 @@
 			}
 		}
 		return true;
+		
 	}
 </script>
 
