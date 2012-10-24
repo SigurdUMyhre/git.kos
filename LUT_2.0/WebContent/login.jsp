@@ -40,7 +40,7 @@ session.setAttribute("name",name);
             <c:otherwise>
             	<c:choose>
            			<c:when test="${ empty adminuserDetails }">
-            			<c:redirect url="index.jsp" />
+            			<c:redirect url="userindex.jsp" />
             		</c:when>
             		<c:otherwise>
             			<c:redirect url="adminindex.jsp" />

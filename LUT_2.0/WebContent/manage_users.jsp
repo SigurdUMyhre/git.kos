@@ -114,19 +114,7 @@ String name=(String) session.getAttribute("name");
 		</tbody>
 	</table>
 	
-<%-- Name:	${userFirstname[1]}				Email:				Admin:
-        <!-- looping through all available reviews - if there are any -->
-	<c:forEach var="userDetails" items="${userDetails.rowsByIndex}">
-		Name: ${userDetails[4]}
-        <c:out value="${userDetails.first_name}" /><br>
-        <c:out value="${userDetails[4]}" /><br>
-        Email: 
-        <c:out value="${userDetails[1]}" /><br>
-        Admin: 
-        <c:out value="${userDetails[5]}" /><br>
-        <br><br>
-     </c:forEach>
---%>
+
 
 
 </body>

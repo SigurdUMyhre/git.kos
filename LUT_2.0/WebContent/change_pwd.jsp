@@ -50,7 +50,7 @@ String name=(String) session.getAttribute("name");
          </c:otherwise>
          <c:choose>
 			<c:when test="${ empty adminuserDetails }">
-            			<meta http-equiv="refresh" content="5;url=index.jsp">
+            			<meta http-equiv="refresh" content="5;url=userindex.jsp">
             </c:when>
             <c:otherwise>
            			 <meta http-equiv="refresh" content="5;url=adminindex.jsp">

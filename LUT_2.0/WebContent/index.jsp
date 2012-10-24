@@ -1,13 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
-<sql:query var="country" dataSource="jdbc/lut2">
-    SELECT full_name FROM country
-</sql:query>
-
-<% 
-String name=(String) session.getAttribute("name"); 
-%> 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,39 +6,32 @@ String name=(String) session.getAttribute("name");
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="lutstyle.css">
-        <title>LUT 2.0 - Help Students Conquer the World</title>
+        <title>LUTAdmin</title>
     </head>
     <body>
-    <p align=right> Logged in as <%=name %> </p>
-    <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
-      <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
-   
-        <h1>Hi!</h1>
+        <h1>Welcome to LUT!</h1>
         <table border="0">
             <thead>
                 <tr>
-                    <th>LUT 2.0 provides information about approved international schools</th>
+                    <th>Log in</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>To view information about schools in a country, please select a country below:</td>
-                </tr>
-                <tr>
-                    <td><form action="schools.jsp">
-                            <strong>Select a country:</strong>
-                            <select name="country">
-                                <c:forEach var="row" items="${country.rowsByIndex}">
-                                    <c:forEach var="column" items="${row}">
-                                        <option value="<c:out value="${column}"/>"><c:out value="${column}"/></option>
-                                    </c:forEach>
-                                </c:forEach>
-                            </select>
-                            <input type="submit" value="submit" />
+                    <td><form method="post" action="login.jsp">
+
+                            <p>
+                                Username:<input type="text" name="username" size="20"></p>
+                            <p>
+                                Password:<input type="password" name="password" size="20"></p>
+                            <p>
+                            	Hva blir dette? <img src="expression.png" width="100" height="35" alt="Expression"><input type= "text" name="number" size="2"></p>
+                            <p><input type="submit" value="submit" name="login"></p>
+                       
                         </form></td>
                 </tr>
+                <tr><td> <a href="register_user.jsp">Create a new user</a></td></tr>
             </tbody>
         </table>
-
     </body>
 </html>

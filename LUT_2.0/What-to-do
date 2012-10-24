@@ -2,4 +2,3 @@
 2. manage_user --> legg til liste med alle brukere
 3. lutadmin.jsp --> fiks sånn at man ikke får ut sql-spørringa ved å la felt stå tomme
 4. Kryptering
-5. Endre lutadmin.jsp til index-side og endre alle pekere til index-siden. (Mari gjør dette)
