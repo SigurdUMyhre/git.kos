@@ -29,6 +29,20 @@
     			alert("You must enter your name");
     			return false;
     		}
+    		else if (ValidateString(text) == false || ValidateString(name) == false){
+    			return false;
+    		}
+    		else {
+    			return true;
+    		}
+    	}
+    	
+    	function ValidateString(string){
+    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+    		if (! /^[a-zA-Z0-9@." "]+$/.test(string)) {
+    			alert ("You have entered illegal characters");
+				return false;
+			}
     		else {
     			return true;
     		}

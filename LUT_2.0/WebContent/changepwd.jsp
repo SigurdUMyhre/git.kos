@@ -47,9 +47,22 @@
 				return false;
 			}
 		}
+		if (ValidateString(email) == false || ValidateString(oldpwd) == false || ValidateString(pw1) == false || ValidateString(pw2) == false){
+			return false;
+		}
 		return true;
-		
 	}
+		
+		function ValidateString(string){
+    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+    		if (! /^[a-zA-Z0-9@." "]+$/.test(string)) {
+    			alert ("You have entered illegal characters");
+				return false;
+			}
+    		else {
+    			return true;
+    		}
+    	}
 </script>
 
 <h1>Change your password</h1>
