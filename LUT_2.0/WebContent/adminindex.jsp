@@ -18,10 +18,37 @@ String name=(String) session.getAttribute("name");
         <title>Adminpage LUT 2.0 - Help Students Conquer the World</title>
     </head>
     <body>
+    <script language="javascript">
+    	function ValidateAddSchools(){
+    		var fullname = document.addschools.full_name.value;
+    		var shortname = document.addschools.short_name.value;
+    		var location = document.addschools.place.value;
+    		var zip = document.addschools.zip.value;
+    		if (fullname.length < 2 || shortname.length < 2 || location.length < 1 || zip.length < 1){
+    			alert("You must enter valied values in each field");
+    			return false;
+    		}
+    		else {
+    			return true;
+    		}
+    	}
+    	function ValidateAddCountry(){
+    		var fullname2 = document.addcountry.full_name.value;
+    		var shortname2 = document.addcountry.short_name.value;
+    		if (fullname2.length < 2 || shortname2.length < 2){
+    			alert("You must enter valid values in every field");
+    			return false;
+    		}
+    		else {
+    			return true;
+    		}
+    	}
+    	
+    </script>
     
-        <p align=right> Logged in as <%=name %> </p>
-   <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
-      <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
+  	<p align=right> Logged in as <%=name %> </p>
+   	<p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
+   	<p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
    
       <h2>Admin page</h2>
         <h1>Hi!</h1>
@@ -37,7 +64,7 @@ String name=(String) session.getAttribute("name");
                     <td>To view information about schools in a country, please select a country below:</td>
                 </tr>
                 <tr>
-                    <td><form action="schools.jsp">
+                    <td><form action="schools.jsp" >
                             <strong>Select a country:</strong>
                             <select name="country">
                                 <c:forEach var="row" items="${country.rowsByIndex}">
@@ -54,7 +81,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to add new schools to review</th>
+                    <th>LUT 2.0 allows you to add new schools to review</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +89,7 @@ String name=(String) session.getAttribute("name");
                       <td> To insert a new school, please insert the info here</td>
                      </tr>
                      <tr>
-                    <td><form action="add_school.jsp" method="post">
+                    <td><form action="add_school.jsp" method="post" name="addschools" onsubmit="return ValidateAddSchools()">
                             <strong>Select a country:</strong>
                             <select name="country">
                                 <c:forEach var="row" items="${country.rowsByIndex}">
@@ -95,7 +122,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to register new countries</th>
+                    <th>LUT 2.0 allows you to register new countries</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,7 +130,7 @@ String name=(String) session.getAttribute("name");
                       <td> To register a new country, please insert the info here</td>
                      </tr>
                      <tr>
-                    <td><form action="add_country.jsp" method="post">
+                    <td><form action="add_country.jsp" method="post" name="addcountry" onsubmit="return ValidateAddCountry()">
 						<p>
 							<strong>Full name of the country:</strong> <input type="text" name="full_name" size="50">
 						</p>
@@ -123,7 +150,7 @@ String name=(String) session.getAttribute("name");
             <table border="0">            
             <thead>
                 <tr>
-                    <th>LUT 2.0 allowes you to manage the registrated users</th>
+                    <th>LUT 2.0 allows you to manage the registered users</th>
                 </tr>
             </thead>
             <tbody>
