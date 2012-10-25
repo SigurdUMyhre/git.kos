@@ -8,24 +8,10 @@
 <%@ page import="java.util.Map" %>
 
 <% 
-/*
-	Map<String, String> DB = new HashMap<String, String>();
-	public static final String SALT = "tor-erik";
 
-	public static void main(String args[]) {
-		PasswordHashingDemo demo = new PasswordHashingDemo();
-		demo.signup("john", "dummy123");
+	String SALT = "tor-erik";
 
-		// login should succeed.
-		if (demo.login("john", "dummy123"))
-			System.out.println("user login successfull.");
-
-		// login should fail because of wrong password.
-		if (demo.login("john", "blahblah"))
-			System.out.println("User login successfull.");
-		else
-			System.out.println("user login failed.");
-	}
+	
 
 	public void signup(String username, String password) {
 		String saltedPassword = SALT + password;
@@ -71,7 +57,25 @@
 	}
 
 
-*/
+	/*
+	
+	public static void main(String args[]) {
+		PasswordHashingDemo demo = new PasswordHashingDemo();
+		demo.signup("john", "dummy123");
+
+		// login should succeed.
+		if (demo.login("john", "dummy123"))
+			System.out.println("user login successfull.");
+
+		// login should fail because of wrong password.
+		if (demo.login("john", "blahblah"))
+			System.out.println("User login successfull.");
+		else
+			System.out.println("user login failed.");
+	}
+	*/
+	
+
 %>
 
 <html>
