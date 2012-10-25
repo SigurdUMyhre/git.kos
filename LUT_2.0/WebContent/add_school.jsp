@@ -7,7 +7,6 @@
 <%@ page import="javax.naming.InitialContext" %>
 
 
-
 <%-- <sql:query var="countr" dataSource="jdbc/lut2">
 	SELECT short_name FROM country
 	WHERE full_name = ? <sql:param value="${param.country}"/>
@@ -26,7 +25,7 @@ String countryID = countryID.country;
 
 System.out.println("alle parametere: "+ full_name + " , " + short_name " , " + place + " , " + zip + " , " + countryID);
 //check if the boxes are empty.
-if(full_name!=null && short_name!=null){
+if (full_name!=null && short_name!=null){
 	  if(full_name!="" && short_name!="") {
      		    InitialContext ctx = new InitialContext();
     		    DataSource ds = (DataSource) ctx.lookup("jdbc/lut2");
@@ -40,7 +39,7 @@ if(full_name!=null && short_name!=null){
 				ps.setString(5, countryID);
 				ps.executeUpdate();
 				connection.close(); 
-  }
+ 	}
 }
 %>
 

@@ -13,9 +13,6 @@ String full_name = request.getParameter("full_name");
 //check if the boxes are empty.
 if(short_name!=null && full_name!=null){
 	  if(short_name!="" && full_name!="") {
-           	    String url ="jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1";
-        		String userDB = "sigurdul_ps";
-      			String pwDB ="123456";
     		    InitialContext ctx = new InitialContext();
     		    DataSource ds = (DataSource) ctx.lookup("jdbc/lut2");
     		    Connection connection = ds.getConnection();
