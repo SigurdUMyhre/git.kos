@@ -4,6 +4,7 @@
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users
 </sql:query>
+
 <% 
 String name=(String) session.getAttribute("name"); 
 %> 
@@ -25,11 +26,51 @@ String name=(String) session.getAttribute("name");
 <title>User management</title>
 </head>
 <body>
+	 <script language="javascript">
+	 	
+	 	function ValidateAdminForm(){
+	 		var firstname = document.makeuseradmin.firstname.value.trim();
+	 		var lastname = document.makeuseradmin.lastname.value.trim();
+	 		var lastname = document.makeuseradmin.email.value.trim();
+	 		if (ValidateString(firstname) == false || ValidateString(lastname) == false || ValidateString(email) == false){
+	 			return false;
+	 		}
+	 		else {
+	 			return false;
+	 		}
+	 	}
+	 	
+	 	function ValidateDeleteForm(){
+	 		var firstname2 = document.deleteuser.firstname.value.trim();
+	 		var lastname2 = document.deleteuser.lastname.value.trim();
+	 		var lastname2 = document.deleteuser.email.value.trim();
+	 		if (ValidateString(firstname2) == false || ValidateString(lastname2) == false || ValidateString(email2) == false){
+	 			return false;
+	 		}
+	 		else {
+	 			return false;
+	 		}
+	 	}
+	 	
+		function ValidateString(string){
+	 		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+		   	if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
+		 		alert ("You have entered illegal characters or you have not entered anything in every field");
+	    		return false;
+			}
+		    else {
+		    	return true;
+		    }
+		  }
+	 </script>
  <p align=right> Logged in as <%=name %> </p>
-   <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
-      <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
+ <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>
+ <p align=right> <a href='changepwd.jsp'><font size="3">Change password</font></a></p>
+
 <h1>User Management</h1>
-	
+
+
+<%--	
 	<c:set var="review" value="${users.rows[0]}"/>
 	<c:choose>
 		<c:when test="${ empty review }">
@@ -44,6 +85,8 @@ String name=(String) session.getAttribute("name");
                 </c:forEach>
 		</c:otherwise>
 	</c:choose>
+ --%>
+
 	<table>
 		<thead>
 			<tr>
@@ -53,7 +96,7 @@ String name=(String) session.getAttribute("name");
 		<tbody>
 			<tr>
 				<td>
-					<form action="user_admin.jsp" method="post">
+					<form action="user_admin.jsp" method="post" name="makeuseradmin" onsubmit="return ValidateAdminForm()">
 						<p>
 							First name: <input type="text" name="firstname" size="20">
 						</p>
@@ -81,7 +124,7 @@ String name=(String) session.getAttribute("name");
 		<tbody>
 			<tr>
 				<td>
-					<form action="user_delete.jsp" method="post">
+					<form action="user_delete.jsp" method="post" name="deleteuser" onsubmit="return ValidateDeleteForm()">
 						<p>
 							First name: <input type="text" name="firstname" size="20">
 						</p>
