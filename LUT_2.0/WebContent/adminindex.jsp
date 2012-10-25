@@ -54,7 +54,7 @@ String name=(String) session.getAttribute("name");
     	
     	function ValidateString(string){
     		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
-    		if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
+    		if (! /^[a-zA-Z0-9@." "]+$/.test(string)) {
     			alert ("You have entered illegal characters");
 				return false;
 			}
