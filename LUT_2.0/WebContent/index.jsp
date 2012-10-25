@@ -16,6 +16,9 @@
 	    		var pw = document.myform.password.value.trim();
 	    		var ans = document.myform.number.value.trim();
 	    		
+	    		if (ValidateString(uname)==false || ValidateString(pw) == false || ValidateString(ans) == false){
+	    			return false;
+	    		}
 	    		if (uname.length < 1){
 	    			alert("You have to enter a username")
 	    			document.myform.username.focus();
@@ -30,6 +33,17 @@
 	    			alert("You must enter the rigth number");
 	    			document.myform.number.focus();
 	    			return false;
+	    		}
+	    	}
+	    	
+	    	function ValidateString(string){
+	    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+	    		if (! /^[a-zA-Z0-9]+$/.test(string)) {
+	    			alert ("One or more of your strings contains illegal characters");
+    				return false;
+				}
+	    		else {
+	    			return true;
 	    		}
 	    	}
     	</script>
