@@ -8,7 +8,7 @@
 <title>Error</title>
 </head>
 <body>
-<h1> Error in URL-address</h1>
+<h1> Fail </h1>
 <h2> <a href="index.jsp"> Back to start </a> </h2>
 </body>
 </html>

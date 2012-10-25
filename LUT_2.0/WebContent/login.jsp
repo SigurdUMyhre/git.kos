@@ -54,19 +54,22 @@ statement.setString(2, encryptedPassword);
 
 ResultSet queryResult = statement.executeQuery();
 
+connection.close();
+
+
 queryResult.beforeFirst();
 
 String foundType;
 
 if (queryResult.next()){
 	   foundType = queryResult.getString(1);
-	
+
 	  	if (foundType.contains("1") ) {
-			response.sendRedirect("adminindex.jsp");
-		}
-	   
-		else if (foundType != null ) {
 			response.sendRedirect("userindex.jsp");
+		}
+
+		else if (foundType != null ) {
+			response.sendRedirect("adminindex.jsp");
 		}
 }
 
@@ -75,9 +78,8 @@ if (queryResult.next()){
 
 
 else {
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("url_fail.jsp");
 }
-
 
 
 

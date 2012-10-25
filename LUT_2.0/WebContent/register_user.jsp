@@ -73,11 +73,11 @@
     		}
         	if (emailCheck(emailID.value)==false){
                 emailID.value="";
-                emailID.focus()
-                return false
+                emailID.focus();
+                return false;
         	}
         	else{
-	          	return true
+	          	return true;
         	}
  		}
 		
