@@ -14,10 +14,6 @@ String review = request.getParameter("review");
 //check if the boxes are empty.
 if(name!=null && review!=null){
 	  if(name!="" && review!="") {
-		  System.out.println("kommer hit ja");
-           	    String url ="jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1";
-        		String userDB = "sigurdul_ps";
-      			String pwDB ="123456";
     		    InitialContext ctx = new InitialContext();
     		    DataSource ds = (DataSource) ctx.lookup("jdbc/lut2");
     		    Connection connection = ds.getConnection();

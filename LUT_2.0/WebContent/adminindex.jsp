@@ -6,7 +6,11 @@
 </sql:query>
 
 <% 
-String name=(String) session.getAttribute("name"); 
+String name = (String) session.getAttribute("name"); 
+
+ if (name == null){
+	response.sendRedirect("index.jsp");
+}
 %> 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
