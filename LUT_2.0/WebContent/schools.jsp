@@ -7,22 +7,10 @@ String[] countries={"Sweden","Denmark","Norway","United States","Italy","Japan",
 <%
 int i;
 
-/* String tempC = request.getParameter("country");
-
-int length = tempC.length();
-String country = tempC.substring(6, length); */
-
-/* System.out.println(country); */
-/* System.out.println(request.getParameter("country"));
-if (request.getParameter("country")==""){
-	System.out.println("haha");
-} */
 boolean wholeList = true;
 boolean match = false;
 
 for (i = 0; i <= countries.length-1;i++){
-/* 	Boolean test = countries[i].equals(request.getParameter("country"));
-	System.out.println("Dette er boolean: " + test + " param:" + request.getParameter("country") + " og hardkode:" + countries[i]); */
  	if (countries[i].equals(request.getParameter("country"))){
  		match = true;
  		wholeList = true;
