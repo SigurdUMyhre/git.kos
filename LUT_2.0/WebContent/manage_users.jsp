@@ -54,14 +54,14 @@ String name=(String) session.getAttribute("name");
 	 	
 		function ValidateString(string){
 	 		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
-		   	if (! /^[a-zA-Z0-9@." "]+$/.test(string)) {
+		   	if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
 		 		alert ("You have entered illegal characters or you have not entered anything in every field");
 	    		return false;
 			}
 		    else {
 		    	return true;
 		    }
-		  }
+		}
 	 </script>
  <p align=right> Logged in as <%=name %> </p>
  <p align=right> <a href='logout.jsp'><font size="3">Log out</font></a></p>

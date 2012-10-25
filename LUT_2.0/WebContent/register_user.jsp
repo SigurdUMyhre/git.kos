@@ -18,11 +18,6 @@
 </head>
 <body>
 
-<%--  
-<applet id="app"
-code ="Hashing"></applet> 
---%>
-
 <script language = "javascript">
 /* This is code to check valid email using java script. */
 /*The emailCheck(str) and ValidateEmailField is taken and adopted form: http://www.roseindia.net/jsp/valid-email-jsp.shtml*/
@@ -141,12 +136,12 @@ code ="Hashing"></applet>
 		
 		/* Runs all the validation methods to ensure that the form is filled out correctly */
 		
-	
-		
 		function ValidateForm(){
-			
-			
-			
+			var firstname2 = document.myform.firstname.value.trim();
+			var lastname2 = document.myform.lastname.value.trim();
+			var email2 = document.myform.email.value.trim();
+			var pw12 = document.myform.password1.value.trim();
+			var pw22 = document.myform.password2.value.trim();
 			if (ValidateNameFields() == false){
 				return false;
 			}
@@ -156,16 +151,23 @@ code ="Hashing"></applet>
 			else if(ValidatePassword() == false){
 				return false;
 			}
-			
-			
-			 
+			else if (ValidateString(firstname2) == false || ValidateString(lastname2) == false || ValidateString(email2) || ValidateString(pw12) || ValidateString(pw2)){
+	 			return false;
+	 		}
 			else {
-		
-		
 				return true;
-				
 			}
-			
+		}
+		
+		function ValidateString(string){
+	 		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+		   	if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
+		 		alert ("You have entered illegal characters");
+	    		return false;
+			}
+		    else {
+		    	return true;
+		    }
 		}
 </script>
 
