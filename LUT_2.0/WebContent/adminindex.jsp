@@ -19,24 +19,17 @@ String name=(String) session.getAttribute("name");
     </head>
     <body>
     <script language="javascript">
-    	function ValidateAddSchools(){
-    		var fullname = document.addschools.full_name.value;
-    		var shortname = document.addschools.short_name.value;
-    		var location = document.addschools.place.value;
-    		var zip = document.addschools.zip.value;
+    	
+    function ValidateAddSchools(){
+    		var fullname = document.addschools.full_name.value.trim();
+    		var shortname = document.addschools.short_name.value.trim();
+    		var location = document.addschools.place.value.trim();
+    		var zip = document.addschools.zip.value.trim();
     		if (fullname.length < 2 || shortname.length < 2 || location.length < 1 || zip.length < 1){
     			alert("You must enter valied values in each field");
     			return false;
     		}
-    		else {
-    			return true;
-    		}
-    	}
-    	function ValidateAddCountry(){
-    		var fullname2 = document.addcountry.full_name.value;
-    		var shortname2 = document.addcountry.short_name.value;
-    		if (fullname2.length < 2 || shortname2.length < 2){
-    			alert("You must enter valid values in every field");
+    		else if (ValidateString(fullname) == false || ValidateString(shortname) == false || ValidateString(location) == false || ValidateString(zip) == false){
     			return false;
     		}
     		else {
@@ -44,6 +37,31 @@ String name=(String) session.getAttribute("name");
     		}
     	}
     	
+    	function ValidateAddCountry(){
+    		var fullname2 = document.addcountry.full_name.value.trim();
+    		var shortname2 = document.addcountry.short_name.value.trim();
+    		if (fullname2.length < 2 || shortname2.length < 2){
+    			alert("You must enter valid values in every field");
+    			return false;
+    		}
+    		else if (ValidateString(fullname2) == false || ValidateString(shortname2) == false ){
+    			return false;
+    		}
+    		else {
+    			return true;
+    		}
+    	}
+    	
+    	function ValidateString(string){
+    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
+    		if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
+    			alert ("You have entered illegal characters");
+				return false;
+			}
+    		else {
+    			return true;
+    		}
+    	}
     </script>
     
   	<p align=right> Logged in as <%=name %> </p>

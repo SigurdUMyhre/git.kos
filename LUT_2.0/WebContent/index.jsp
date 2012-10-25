@@ -16,9 +16,6 @@
 	    		var pw = document.myform.password.value.trim();
 	    		var ans = document.myform.number.value.trim();
 	    		
-	    		if (ValidateString(uname)==false || ValidateString(pw) == false || ValidateString(ans) == false){
-	    			return false;
-	    		}
 	    		if (uname.length < 1){
 	    			alert("You have to enter a username")
 	    			document.myform.username.focus();
@@ -34,12 +31,15 @@
 	    			document.myform.number.focus();
 	    			return false;
 	    		}
+	    		if (ValidateString(uname)==false || ValidateString(pw) == false || ValidateString(ans) == false){
+	    			return false;
+	    		}
 	    	}
 	    	
 	    	function ValidateString(string){
 	    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
 	    		if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
-	    			alert ("You have either not entered anything, or you have entered illegal characters");
+	    			alert ("You have entered illegal characters");
     				return false;
 				}
 	    		else {
