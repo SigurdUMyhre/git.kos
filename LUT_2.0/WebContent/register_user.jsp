@@ -87,7 +87,7 @@ code ="Hashing"></applet>
  		}
 		
 		function ValidateEmail() { 
-			var email = document.myform.email.value;
+			var email = document.myform.email.value.trim();
 			var atpos= email.indexOf("@");
 			var dotpos=email.lastIndexOf(".");
 			if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
@@ -102,8 +102,8 @@ code ="Hashing"></applet>
 		
 		/* Validates that the two password strings are equal. The must must also contain more than 3 characters, but no more than 20. */
 		function ValidatePassword(){
-			var pw1 = document.myform.password1.value;
-			var pw2 = document.myform.password2.value;
+			var pw1 = document.myform.password1.value.trim();
+			var pw2 = document.myform.password2.value.trim();
 			if (pw1.length < 4){
 				alert("The password must contain more than 3 characters");
 				return false;
@@ -127,8 +127,8 @@ code ="Hashing"></applet>
 
 		/* Validate That there are text in the firstname field and the lastname fiels */
 		function ValidateNameFields(){
-			var firstname = document.myform.firstname.value;
-			var lastname = document.myform.lastname.value;
+			var firstname = document.myform.firstname.value.trim();
+			var lastname = document.myform.lastname.value.trim();
 			if (firstname.length <= 0 || lastname.length <= 0){
 				alert("You must enter a firstname and a lastname");
 				document.myform.firstname.focus();
