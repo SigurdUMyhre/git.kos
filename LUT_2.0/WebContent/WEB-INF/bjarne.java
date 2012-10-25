@@ -1,6 +1,9 @@
 package test
 
 
+public class HAsging extends Applet { 
+	
+}
 
 String encryptedPassword = request.getParameter("password1") ;
  

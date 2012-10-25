@@ -6,77 +6,9 @@
 <%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
-
-<% 
-
-	String SALT = "tor-erik";
-
-	
-
-	public void signup(String username, String password) {
-		String saltedPassword = SALT + password;
-		String hashedPassword = generateHash(saltedPassword);
-		DB.put(username, hashedPassword);
-	}
-
-	public Boolean login(String username, String password) {
-		Boolean isAuthenticated = false;
-
-		// remember to use the same SALT value use used while storing password
-		// for the first time.
-		String saltedPassword = SALT + password;
-		String hashedPassword = generateHash(saltedPassword);
-
-		String storedPasswordHash = DB.get(username);
-		if(hashedPassword.equals(storedPasswordHash)){
-			isAuthenticated = true;
-		}else{
-			isAuthenticated = false;
-		}
-		return isAuthenticated;
-	}
-
-	public static String generateHash(String input) {
-		StringBuilder hash = new StringBuilder();
-
-		try {
-			MessageDigest sha = MessageDigest.getInstance("SHA-1");
-			byte[] hashedBytes = sha.digest(input.getBytes());
-			char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-					'a', 'b', 'c', 'd', 'e', 'f' };
-			for (int idx = 0; idx < hashedBytes.length; ++idx) {
-				byte b = hashedBytes[idx];
-				hash.append(digits[(b & 0xf0) >> 4]);
-				hash.append(digits[b & 0x0f]);
-			}
-		} catch (NoSuchAlgorithmException e) {
-			// handle error here.
-		}
-
-		return hash.toString();
-	}
+<%@ page import="java.applet.Applet" %>
 
 
-	/*
-	
-	public static void main(String args[]) {
-		PasswordHashingDemo demo = new PasswordHashingDemo();
-		demo.signup("john", "dummy123");
-
-		// login should succeed.
-		if (demo.login("john", "dummy123"))
-			System.out.println("user login successfull.");
-
-		// login should fail because of wrong password.
-		if (demo.login("john", "blahblah"))
-			System.out.println("User login successfull.");
-		else
-			System.out.println("user login failed.");
-	}
-	*/
-	
-
-%>
 
 <html>
 <head>
@@ -85,6 +17,11 @@
 <title>Register new user</title>
 </head>
 <body>
+
+<%--  
+<applet id="app"
+code ="Hashing"></applet> 
+--%>
 
 <script language = "javascript">
 /* This is code to check valid email using java script. */
@@ -203,7 +140,12 @@
 		}
 		
 		/* Runs all the validation methods to ensure that the form is filled out correctly */
+		
+	
+		
 		function ValidateForm(){
+			
+			
 			
 			if (ValidateNameFields() == false){
 				return false;
@@ -214,7 +156,20 @@
 			else if(ValidatePassword() == false){
 				return false;
 			}
+			
+			
+			 
 			else {
+				
+				var pwd = document.myform.password1.value; 
+				  // var ran=document.loginForm.ran.value; 
+				   var hash = hex_md5(pwd);   // MD5 Hash of user input password  
+				   alert(hash);
+				   console.log('bjarne')
+				 //  var saltedhash=hex_md5(hash+ran);  // Added with salt and the MD5 hash
+				   document.myform.password1.value = "itChanged";  // sent to the server 
+				<%-- var hashedPwd = app.generateHash(document.myform.password1.value);
+				document.myform.password1.value = hashedPwd; --%>
 				return true;
 			}
 			
