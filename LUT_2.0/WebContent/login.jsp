@@ -66,10 +66,13 @@ if (queryResult.next()){
 
 	  	if (foundType.equals(1) ) {
 			response.sendRedirect("adminindex.jsp");
+			session.setAttribute("role", 1);
 		}
 
 		else if (foundType != null ) {
 			response.sendRedirect("userindex.jsp");
+			session.setAttribute("role", 0);
+
 		}
 }
 

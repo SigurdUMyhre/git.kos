@@ -6,6 +6,17 @@
 </sql:query>
 
 <% 
+ 
+ int role = (Integer) session.getAttribute("role"); 
+	
+ 
+ if (role == 2){
+		response.sendRedirect("fail.jsp"); 
+ }		
+
+%> 
+
+<% 
 String name=(String) session.getAttribute("name"); 
 %> 
 

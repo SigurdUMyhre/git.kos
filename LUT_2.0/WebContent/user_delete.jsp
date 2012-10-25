@@ -2,9 +2,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <% 
-String name=request.getParameter("username"); 
-session.setAttribute("name",name); 
-%>
+//String name=request.getParameter("username"); 
+//session.setAttribute("name",name); 
+ 
+String name = (String) session.getAttribute("name"); 
+
+
+
+int role = (Integer) session.getAttribute("role"); 
+
+if (role == 0){
+		response.sendRedirect("url_fail.jsp");
+}		
+
+%> 
+
 
 <sql:query var="users" dataSource="jdbc/lut2">
     SELECT * FROM admin_users

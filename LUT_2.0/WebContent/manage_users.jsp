@@ -8,9 +8,14 @@
 <% 
 String name = (String) session.getAttribute("name"); 
 
- if (name == null){
-	response.sendRedirect("index.jsp");
-}
+
+
+int role = (Integer) session.getAttribute("role"); 
+
+if (role == 0){
+		response.sendRedirect("url_fail.jsp");
+}		
+
 %> 
 
 
