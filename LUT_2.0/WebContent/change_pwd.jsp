@@ -47,7 +47,7 @@ String name=(String) session.getAttribute("name");
    					 </sql:update>
 				</sql:transaction>
 					Your password has changed.
-					<meta http-equiv="refresh" content="5";url="index.jsp">
+					<meta http-equiv="refresh" content="5;url=index.jsp">
    	</c:otherwise>
    	<%-- 
          <c:choose>
