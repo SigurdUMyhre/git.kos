@@ -23,7 +23,7 @@ String zip = request.getParameter("zip");
 String country = request.getParameter("country");
 String countryID = "XX";
 
-System.out.println("alle parametere: " + full_name + " , " + short_name " , " + place + " , " + zip + " , " + countryID);
+System.out.println("alle parametere: " + full_name + " , " + short_name + " , " + place + " , " + zip + " , " + countryID);
 //check if the boxes are empty.
 if (full_name!=null && short_name!=null){
 	  if(full_name!="" && short_name!="") {

@@ -59,17 +59,17 @@ connection.close();
 
 queryResult.beforeFirst();
 
-String foundType;
+Integer foundType;
 
 if (queryResult.next()){
-	   foundType = queryResult.getString(1);
+	   foundType = queryResult.getInt(5);
 
-	  	if (foundType.contains("1") ) {
-			response.sendRedirect("userindex.jsp");
+	  	if (foundType.equals(1) ) {
+			response.sendRedirect("adminindex.jsp");
 		}
 
 		else if (foundType != null ) {
-			response.sendRedirect("adminindex.jsp");
+			response.sendRedirect("userindex.jsp");
 		}
 }
 
