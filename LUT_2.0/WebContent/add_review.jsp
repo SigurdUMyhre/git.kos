@@ -7,8 +7,8 @@
 <%@ page import="javax.naming.InitialContext" %>
 	
 <%
-String school_id_string = request.getParameter("school_id");
-int school_id = Integer.parseInt(school_id_string);
+String school_id = request.getParameter("school_id");
+//String school_id = Integer.parseInt(school_id_string);
 String name = request.getParameter("name");
 String review = request.getParameter("review");
 
@@ -20,7 +20,7 @@ System.out.println("Name: " + name + " review: " + review + " idnr " + school_id
 if(name!=null && review!=null){
 	  if(name!="" && review!="") {
 		  System.out.println("kommer hit ja");
-          try {
+         // try {
            	    String url ="jdbc:mysql://mysql.stud.ntnu.no/sigurdul_db1";
         		String userDB = "sigurdul_ps";
       			String pwDB ="123456";
@@ -34,27 +34,29 @@ if(name!=null && review!=null){
     		    }
     		    		
 				System.out.println("kommer forbi connection");
-				String query = "INSERT INTO user_reviews(school_id, name, review) VALUES (?, ?, ?)";
+				String query = "INSERT INTO user_reviews(school_id, user_id, review) VALUES (?, ?, ?)";
 				System.out.println(query);
 				PreparedStatement ps = connection.prepareStatement(query);
-				ps.setInt(1, school_id);
+				ps.setString(1, school_id);
 				ps.setString(2, name);
 				ps.setString(3, review);
 
-				
+				ps.executeUpdate();
+				/*
 				try {
 					ps.executeUpdate();
 				}
 				catch(Exception e){
 					out.println("executeUpdate FAILER");
 				}
+				*/
 				
 				connection.close();
 		        System.out.println("tullball");	  
- 			}
-	catch (Exception ex) {
-       out.println("Unable to connect to database.");
-     }
+ 			//}
+//	catch (Exception ex) {
+  //     out.println("Unable to connect to database.");
+    // }
   }
 }
 %>
