@@ -151,9 +151,11 @@
 			else if(ValidatePassword() == false){
 				return false;
 			}
-			else if (ValidateString(firstname2) == false || ValidateString(lastname2) == false || ValidateString(email2) || ValidateString(pw12) || ValidateString(pw2)){
+			/*
+			else if (ValidateString(firstname2) == false || ValidateString(lastname2) == false || ValidateString(email2) || ValidateString(pw12) || ValidateString(pw22)){
 	 			return false;
 	 		}
+			*/
 			else {
 				return true;
 			}
