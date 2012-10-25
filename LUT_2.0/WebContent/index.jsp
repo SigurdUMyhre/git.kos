@@ -12,9 +12,9 @@
     	
     	<script language="javascript">
 	    	function ValidateForm(){
-	    		var uname = document.myform.username.value;
-	    		var pw = document.myform.password.value;
-	    		var ans = document.myform.number.value;
+	    		var uname = document.myform.username.value.trim();
+	    		var pw = document.myform.password.value.trim();
+	    		var ans = document.myform.number.value.trim();
 	    		
 	    		if (uname.length < 1){
 	    			alert("You have to enter a username")
