@@ -35,11 +35,7 @@ if(short_name!=null && full_name!=null){
   }
 }
 %>
-<%-- <sql:transaction dataSource="jdbc/lut2">
-    <sql:update var="count">
-        INSERT INTO country VALUES ('${param.short_name}', '${param.full_name}');
-    </sql:update>
-</sql:transaction> --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
