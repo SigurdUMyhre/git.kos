@@ -38,8 +38,8 @@
 	    	
 	    	function ValidateString(string){
 	    		//var validate = abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789;
-	    		if (! /^[a-zA-Z0-9]+$/.test(string)) {
-	    			alert ("One or more of your strings contains illegal characters");
+	    		if (! /^[a-zA-Z0-9@.]+$/.test(string)) {
+	    			alert ("You have either not entered anything, or you have entered illegal characters");
     				return false;
 				}
 	    		else {
