@@ -17,7 +17,7 @@ session.setAttribute("name",name);
     WHERE  uname = ? <sql:param value="${param.username}" /> 
     AND admin = 1
 </sql:query>
-    
+   
 <c:set var="userDetails" value="${users.rows[0]}"/>
 <c:set var="adminuserDetails" value="${adminusers.rows[0]}"/>
 
@@ -55,4 +55,4 @@ session.setAttribute("name",name);
 	</c:otherwise>
 	</c:choose>
 	</body>
-    </html>
+</html>
