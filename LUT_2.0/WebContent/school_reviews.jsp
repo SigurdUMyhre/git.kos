@@ -16,6 +16,25 @@
         <title>Reviews for ${param.school_fullname}</title>
     </head>
     <body>
+    <script language="javascript">
+    	function ValidateForm(){
+    		var text = document.reviewform.review.value.trim();
+    		var name = document.reviewform.name.value.trim();
+    		//text = text.trim();
+    		if (text.length < 2) {
+    			alert("You must enter text");
+    			return false;
+    		}
+    		else if (name.length < 1) {
+    			alert("You must enter your name");
+    			return false;
+    		}
+    		else {
+    			return true;
+    		}
+    	}
+    </script>
+        
         <h1>Reviews for ${param.school_shortname}</h1>
 
         <!-- looping through all available reviews - if there are any -->
@@ -45,9 +64,9 @@
             <tbody>
                 <tr>
                     <td>
-                        <form action="add_review.jsp"  method="post">
+                        <form action="add_review.jsp"  method="post" name="reviewform" onsubmit="return ValidateForm()">
                             <input type="hidden" name="school_id" value="${param.school_id}" />
-                            <textarea name="review" rows=10 cols=60 wrap="physical" autofocus="on" > 
+                            <textarea name="review" rows=10 cols=60 wrap="physical" autofocus="on"  > 
                             </textarea>
                             <br><br>
                             Your name: <input type="text" name="name" />
