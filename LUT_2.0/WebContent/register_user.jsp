@@ -6,7 +6,7 @@
 <%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="java.applet.Applet" %>
+
 
 
 
@@ -160,21 +160,27 @@ code ="Hashing"></applet>
 			
 			 
 			else {
-				
-				var pwd = document.myform.password1.value; 
-				  // var ran=document.loginForm.ran.value; 
-				   var hash = hex_md5(pwd);   // MD5 Hash of user input password  
-				   alert(hash);
-				   console.log('bjarne')
-				 //  var saltedhash=hex_md5(hash+ran);  // Added with salt and the MD5 hash
-				   document.myform.password1.value = "itChanged";  // sent to the server 
-				<%-- var hashedPwd = app.generateHash(document.myform.password1.value);
-				document.myform.password1.value = hashedPwd; --%>
+		
+		
 				return true;
+				
 			}
 			
 		}
 </script>
+
+
+	<%--	
+			//	var pwd = document.myform.password1.value; 
+				  // var ran=document.loginForm.ran.value; 
+				//   var hash = hex_md5(pwd);   // MD5 Hash of user input password  
+				  // alert(hash);
+				   //console.log('bjarne')
+				 //  var saltedhash=hex_md5(hash+ran);  // Added with salt and the MD5 hash
+				 //  document.myform.password1.value = "itChanged";  // sent to the server 
+				<%-- var hashedPwd = app.generateHash(document.myform.password1.value);
+				document.myform.password1.value = hashedPwd; --%>
+				
 
 <h1>Register as a new user</h1>
 	<table>

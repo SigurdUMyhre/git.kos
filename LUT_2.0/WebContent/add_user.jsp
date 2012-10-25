@@ -10,9 +10,33 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.crypto.spec.DESKeySpec" %>
+<%@page import="javax.crypto.SecretKeyFactory" %>
+<%@page import="javax.crypto.SecretKey" %>
+<%@page import="sun.misc.BASE64Encoder" %>
+<%@page import="javax.crypto.Cipher" %>
+
+
+<% DESKeySpec keySpec = new DESKeySpec("YourSecr".getBytes("UTF8")); 
+SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+SecretKey key = keyFactory.generateSecret(keySpec);
+sun.misc.BASE64Encoder base64encoder = new BASE64Encoder();
+
+
+//ENCODE plainTextPassword String
+     
+
+//DECODE encryptedPwd String  %>
 
 <%
-String password = request.getParameter("password1");
+
+String plainTextPassword = request.getParameter("password1");
+byte[] cleartext = plainTextPassword.getBytes("UTF8");      
+
+Cipher cipher = Cipher.getInstance("DES"); // cipher is not thread safe
+cipher.init(Cipher.ENCRYPT_MODE, key);
+String password = base64encoder.encode(cipher.doFinal(cleartext));
+
 String uname = request.getParameter("email");
 String firstname = request.getParameter("firstname");
 String lastname = request.getParameter("lastname");
